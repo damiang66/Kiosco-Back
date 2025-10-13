@@ -20,7 +20,7 @@ import java.util.Optional;
 public class ProductoController {
     @Autowired
     ProductoService productoService;
-    private ResponseEntity<?>validar(BindingResult result){
+    private ResponseEntity<?>validar(@Valid BindingResult result){
         Map<String, Object> errores = new HashMap<>();
         result.getFieldErrors().forEach(e->{
             errores.put(e.getField(), "El campo: " + e.getField() + " " + e.getDefaultMessage());
