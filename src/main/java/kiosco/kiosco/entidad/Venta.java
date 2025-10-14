@@ -24,54 +24,6 @@ public class Venta {
 
     private Double total;
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getNumeroFactura() {
-        return numeroFactura;
-    }
-
-    public void setNumeroFactura(String numeroFactura) {
-        this.numeroFactura = numeroFactura;
-    }
-
-    public Date getFecha() {
-        return fecha;
-    }
-
-    public void setFecha(Date fecha) {
-        this.fecha = fecha;
-    }
-
-    public String getCliente() {
-        return cliente;
-    }
-
-    public void setCliente(String cliente) {
-        this.cliente = cliente;
-    }
-
-    public Double getTotal() {
-        return total;
-    }
-
-    public void setTotal(Double total) {
-        this.total = total;
-    }
-
-    public List<VentaDetalle> getDetalles() {
-        return detalles;
-    }
-
-    public void setDetalles(List<VentaDetalle> detalles) {
-        this.detalles = detalles;
-    }
-
     @OneToMany(mappedBy = "venta", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<VentaDetalle> detalles;
 }
