@@ -1,10 +1,11 @@
-package kiosco.kiosco.service;
+package kiosco.kiosco.service.impl;
 
-import kiosco.kiosco.entidad.Producto;
+import kiosco.kiosco.entidad.producto.Producto;
 import kiosco.kiosco.entidad.Venta;
 import kiosco.kiosco.entidad.VentaDetalle;
 import kiosco.kiosco.repository.ProductoRepository;
 import kiosco.kiosco.repository.VentaRepository;
+import kiosco.kiosco.service.VentaService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -12,11 +13,11 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class VentaServiceImplementacion implements VentaService{
+public class VentaServiceImpl implements VentaService {
     private final VentaRepository ventaRepository;
     private final ProductoRepository productoRepository;
 
-    public VentaServiceImplementacion(VentaRepository ventaRepository, ProductoRepository productoRepository) {
+    public VentaServiceImpl(VentaRepository ventaRepository, ProductoRepository productoRepository) {
         this.ventaRepository = ventaRepository;
         this.productoRepository = productoRepository;
     }

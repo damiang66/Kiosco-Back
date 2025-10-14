@@ -1,6 +1,7 @@
 package kiosco.kiosco.entidad;
 
 import jakarta.persistence.*;
+import kiosco.kiosco.entidad.producto.Producto;
 import lombok.Data;
 
 @Entity

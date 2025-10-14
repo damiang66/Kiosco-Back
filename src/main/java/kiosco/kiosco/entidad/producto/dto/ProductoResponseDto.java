@@ -1,24 +1,19 @@
-package kiosco.kiosco.entidad;
+package kiosco.kiosco.entidad.producto.dto;
 
-import jakarta.persistence.*;
-import lombok.Data;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Entity
-@Data
-@Table(name = "productos")
 @Getter
 @Setter
-public class Producto {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+@NoArgsConstructor
+@AllArgsConstructor
+public class ProductoResponseDto {
     private Long id;
     private Long codigo;
     private String descripcion;
     private Long cantidad;
     private Double precioCompra;
     private Double precioVenta;
-
-
 }
