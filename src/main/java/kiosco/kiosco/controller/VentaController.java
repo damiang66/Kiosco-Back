@@ -35,6 +35,7 @@ public class VentaController {
 
     @PostMapping
     public ResponseEntity<Venta> crear(@RequestBody Venta venta) {
+        System.out.println(venta);
         return ResponseEntity.ok(ventaService.crearVenta(venta));
     }
 

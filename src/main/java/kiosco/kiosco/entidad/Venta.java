@@ -1,9 +1,12 @@
 package kiosco.kiosco.entidad;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Max;
 import lombok.Data;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -15,12 +18,12 @@ public class Venta {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String numeroFactura;
+  //  private String numeroFactura;
 
     @Temporal(TemporalType.TIMESTAMP)
     private Date fecha = new Date();
 
-    private String cliente;
+    //private String cliente;
 
     private Double total;
 
@@ -32,13 +35,7 @@ public class Venta {
         this.id = id;
     }
 
-    public String getNumeroFactura() {
-        return numeroFactura;
-    }
 
-    public void setNumeroFactura(String numeroFactura) {
-        this.numeroFactura = numeroFactura;
-    }
 
     public Date getFecha() {
         return fecha;
@@ -48,13 +45,6 @@ public class Venta {
         this.fecha = fecha;
     }
 
-    public String getCliente() {
-        return cliente;
-    }
-
-    public void setCliente(String cliente) {
-        this.cliente = cliente;
-    }
 
     public Double getTotal() {
         return total;
@@ -73,7 +63,7 @@ public class Venta {
     }
 
     @OneToMany(mappedBy = "venta", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<VentaDetalle> detalles;
+    private List<VentaDetalle> detalles = new ArrayList<>();
 }
 
 

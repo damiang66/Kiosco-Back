@@ -61,8 +61,7 @@ public class VentaServiceImplementacion implements VentaService{
         }
 
         ventaExistente.getDetalles().clear();
-        ventaExistente.setCliente(ventaNueva.getCliente());
-        ventaExistente.setNumeroFactura(ventaNueva.getNumeroFactura());
+
         ventaExistente.setFecha(ventaNueva.getFecha());
         double total = 0.0;
 
