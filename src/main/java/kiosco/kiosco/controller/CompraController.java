@@ -1,7 +1,7 @@
 package kiosco.kiosco.controller;
 import kiosco.kiosco.entidad.Compra;
 import kiosco.kiosco.service.CompraService;
-
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
@@ -35,4 +35,8 @@ public class CompraController {
     public Compra buscarPorId(@PathVariable Long id) {
         return compraService.findById(id);
     }
+    @PutMapping("/{id}")
+    public ResponseEntity<Compra> actualizar(@PathVariable Long id, @RequestBody Compra compra) {
+        return ResponseEntity.ok(compraService.actualizarCompra(id, compra));
+}
 }
