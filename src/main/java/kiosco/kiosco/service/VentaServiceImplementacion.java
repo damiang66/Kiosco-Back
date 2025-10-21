@@ -8,6 +8,7 @@ import kiosco.kiosco.repository.VentaRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -111,5 +112,23 @@ public class VentaServiceImplementacion implements VentaService{
     @Override
     public Optional<Venta> buscarPorId(Long id) {
         return ventaRepository.findById(id);
+    }
+    // cierre de caja
+    public List<Venta> obtenerVentasAbiertas() {
+        return ventaRepository.findByCerradaFalse();
+    }
+
+    public Double obtenerTotalVentasAbiertas() {
+        return ventaRepository.getTotalVentasAbiertas();
+    }
+
+    public void cerrarVentasAbiertas() {
+        List<Venta> abiertas = ventaRepository.findByCerradaFalse();
+        abiertas.forEach(v -> v.setCerrada(true));
+        ventaRepository.saveAll(abiertas);
+    }
+    //reportes
+    public List<Venta> obtenerVentasEntreFechas(Date inicio, Date fin) {
+        return ventaRepository.findByFechaBetween(inicio, fin);
     }
 }

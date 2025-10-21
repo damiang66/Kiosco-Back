@@ -5,9 +5,11 @@ import kiosco.kiosco.entidad.Venta;
 
 import kiosco.kiosco.service.VentaService;
 
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -49,4 +51,11 @@ public class VentaController {
         ventaService.eliminarVenta(id);
         return ResponseEntity.noContent().build();
     }
+    //reportes
+    @GetMapping("/entre-fechas")
+    public List<Venta> getVentasEntreFechas(@RequestParam("inicio") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date inicio,
+                                            @RequestParam("fin") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date fin) {
+        return ventaService.obtenerVentasEntreFechas(inicio, fin);
+    }
+
 }

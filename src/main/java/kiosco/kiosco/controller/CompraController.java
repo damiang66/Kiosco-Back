@@ -1,8 +1,11 @@
 package kiosco.kiosco.controller;
 import kiosco.kiosco.entidad.Compra;
 import kiosco.kiosco.service.CompraService;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -39,4 +42,11 @@ public class CompraController {
     public ResponseEntity<Compra> actualizar(@PathVariable Long id, @RequestBody Compra compra) {
         return ResponseEntity.ok(compraService.actualizarCompra(id, compra));
 }
+// reportes
+@GetMapping("/entre-fechas")
+public List<Compra> getComprasEntreFechas(@RequestParam("inicio") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date inicio,
+                                          @RequestParam("fin") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date fin) {
+    return compraService.obtenerComprasEntreFechas(inicio, fin);
+}
+
 }

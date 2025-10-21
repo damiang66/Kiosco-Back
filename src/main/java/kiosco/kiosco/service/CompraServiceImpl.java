@@ -6,6 +6,7 @@ import kiosco.kiosco.repository.ProductoRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 @RequiredArgsConstructor
 @Service
@@ -78,4 +79,9 @@ public class CompraServiceImpl implements CompraService{
         ventaExistente.setTotal(total);
         return compraRepository.save(ventaExistente);
     }
+    //reportes
+    public List<Compra> obtenerComprasEntreFechas(Date inicio, Date fin) {
+        return compraRepository.findByFechaBetween(inicio, fin);
+    }
+
 }
