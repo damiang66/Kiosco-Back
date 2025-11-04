@@ -1,8 +1,11 @@
 package kiosco.kiosco.controller;
 
+import kiosco.kiosco.entidad.Usuario;
 import kiosco.kiosco.entidad.Venta;
 
+import kiosco.kiosco.service.UsuarioService;
 import kiosco.kiosco.service.VentaService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
@@ -12,9 +15,11 @@ import java.util.List;
 public class CierreCajaController {
 
     private final VentaService ventaService;
+    private final UsuarioService usuarioService;
 
-    public CierreCajaController(VentaService ventaService) {
+    public CierreCajaController(VentaService ventaService, UsuarioService usuarioService) {
         this.ventaService = ventaService;
+        this.usuarioService = usuarioService;
     }
 
     @GetMapping("/abiertas")
@@ -30,5 +35,10 @@ public class CierreCajaController {
     @PostMapping("/cerrar")
     public void cerrarVentas() {
         ventaService.cerrarVentasAbiertas();
+    }
+
+    @PostMapping
+    public Usuario iniciarSesion(@RequestBody Usuario usuario){
+        return usuarioService.iniciarSesion(usuario);
     }
 }
